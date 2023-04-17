@@ -14,10 +14,6 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  setTimeout(() => {
-    localStorage.removeItem("token");
-  }, 5000);
-
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
