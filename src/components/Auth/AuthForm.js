@@ -5,7 +5,7 @@ import classes from "./AuthForm.module.css";
 import AuthContext from "../../store/AuthContext";
 
 const AuthForm = () => {
-  const history = useHistory()
+  const history = useHistory();
   const authCtx = useContext(AuthContext);
 
   const emailInputRef = useRef();
@@ -13,6 +13,10 @@ const AuthForm = () => {
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  setTimeout(() => {
+    localStorage.removeItem("token");
+  }, 5000);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -59,8 +63,7 @@ const AuthForm = () => {
       })
       .then((data) => {
         authCtx.login(data.idToken);
-        history.replace('./')
-
+        history.replace("./");
       })
       .catch((err) => {
         alert(err.message);
